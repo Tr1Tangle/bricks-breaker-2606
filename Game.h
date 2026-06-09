@@ -19,4 +19,5 @@ public:
 	void ResetBall();
 	void CheckCollision();
 	bool gameWon = false;
+	bool gameLost = false;
 };

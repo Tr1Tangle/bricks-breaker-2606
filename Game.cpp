@@ -34,7 +34,8 @@ void Game::Reset()
 		bricks.push_back(brick);
 	}
 
-
+	gameWon = false;
+	gameLost = false;
 
 }
 
@@ -87,6 +88,12 @@ void Game::Render() const
 	if (gameWon)
 	{
 		Console::WordWrap(20, 20, 50, "You busted all bricks! Press R to reset");
+		
+	}
+	if (gameLost)
+	{
+		Console::WordWrap(20, 20, 50, "You Lost! Press R to reset");
+		
 	}
 
 	Console::Lock(false);
@@ -127,4 +134,12 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display (render) defeat text with R to reset
+
+	if (ball.y_position >= Console::WindowHeight() - 1)
+	{
+		gameLost = true;
+
+		ball.x_velocity = 0;
+		ball.y_velocity = 0;
+	}
 }
