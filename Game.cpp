@@ -24,7 +24,7 @@ void Game::Reset()
 	brick.width = 10;
 	brick.height = 2;
 	brick.doubleThick = true;
-	brick.color = ConsoleColor::DarkGreen;
+	brick.color = ConsoleColor::DarkCyan;
 
 	for (int i = 0; i < 5; i++)
 	{
