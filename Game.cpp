@@ -84,6 +84,11 @@ void Game::Render() const
 		bricks[i].Draw();
 	}
 
+	if (gameWon)
+	{
+		Console::WordWrap(20, 20, 50, "You busted all bricks! Press R to reset");
+	}
+
 	Console::Lock(false);
 }
 
@@ -106,7 +111,15 @@ void Game::CheckCollision()
 }
 
 	// TODO #6 - If no bricks remain, pause ball and display (render) victory text with R to reset
+	if (bricks.empty())
+	{
+		gameWon = true;
 
+		ball.x_velocity = 0;
+		ball.y_velocity = 0;
+
+		
+	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
 	{
